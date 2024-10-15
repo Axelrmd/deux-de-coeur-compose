@@ -2,7 +2,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: k8s-microproject-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  tls:
+  - hosts:
+    - 2-de-coeur-compose
+    secretName: k8s-tls
   rules:
   - host: 2-de-coeur-compose
     http:
